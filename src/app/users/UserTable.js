@@ -6,23 +6,24 @@ export default function UserTable({ users }) {
     users.forEach((user) => {
         // each user and push them inside the array with the User component (have not made)
         rows.push(
-            <User 
+            <User
                 user={user}
                 key={user._id} />
-        )
-    })
+        );
+    });
 
     return (
         <table>
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Job Title</th>
+                    <th>Full Name</th>
+                    <th>Username</th>
                     <th>Email</th>
+                    <th>Password</th>
+                    <th>Pronouns</th>
                 </tr>
             </thead>
             <tbody>{rows}</tbody>
         </table>
-    )
+    );
 }

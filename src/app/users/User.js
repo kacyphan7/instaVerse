@@ -13,14 +13,16 @@ export default function User({ user }) {
 
     }
 
-    if (redirect) { router.push('/users/profile') }
+    if (redirect) { router.push('/users/profile'); }
 
     return (
         <tr>
-            <td>{user.firstName}</td>
-            <td>{user.lastName}</td>
-            <td>{user.jobTitle}</td>
+            <td>{user.fullName}</td>
+            <td>{user.username}</td>
+            <td>{user.email}</td>
+            <td>{user.password}</td>
+            <td>{user.pronouns}</td>
             <td onClick={addUserData}>{user.email}</td>
         </tr>
-    )
+    );
 }

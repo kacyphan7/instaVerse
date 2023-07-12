@@ -5,39 +5,39 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 const NewUser = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [jobTitle, setJobTitle] = useState('');
-    const [number, setNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [pronouns, setPronouns] = useState('');
 
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
 
-    const handleFirstName = (e) => {
-        setFirstName(e.target.value);
+    const handleFullName = (e) => {
+        setFullName(e.target.value);
     };
 
-    const handleLastName = (e) => {
-        setLastName(e.target.value);
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
     };
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
     };
 
-    const handleJobTitle = (e) => {
-        setJobTitle(e.target.value);
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
     };
 
-    const handleNumber = (e) => {
-        setNumber(e.target.value);
+    const handlePronouns = (e) => {
+        setPronouns(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault(); // at the beginning of a submit function
 
-        const newUser = { firstName, lastName, email, jobTitle, number };
+        const newUser = { fullName, userName, email, password, pronouns };
         axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/new`, newUser)
             .then(response => {
                 console.log(response);
@@ -57,20 +57,24 @@ const NewUser = () => {
                     <h2 className="py-2">Make New User</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">First Name</label>
-                            <input type="text" name="firstName" value={firstName} onChange={handleFirstName} className="form-control" />
+                            <label htmlFor="name">Full Name</label>
+                            <input type="text" name="fullName" value={fullName} onChange={handleFullName} className="form-control" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" name="lastName" value={lastName} onChange={handleLastName} className="form-control" />
+                            <label htmlFor="username">Username</label>
+                            <input type="text" name="username" value={username} onChange={handleUsername} className="form-control" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input type="email" name="email" value={email} onChange={handleEmail} className="form-control" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="jobTitle">Job Title</label>
-                            <input type="text" name="jobTitle" value={jobTitle} onChange={handleJobTitle} className="form-control" />
+                            <label htmlFor="password">Password</label>
+                            <input type="text" name="password" value={password} onChange={handlePassword} className="form-control" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="pronouns">Pronouns</label>
+                            <input type="text" name="pronouns" value={pronouns} onChange={handlePronouns} className="form-control" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="number"></label>
